@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Events</title>
+    <style>
+        ul{
+            display: none;
+        }
+
+        .search:focus ~ ul {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. Attribute events -->
+    <h1 onclick="console.log(this.innerText)">DOM Events 1</h1>
+    <!-- This sẽ trả về elementNode đang bấm -->
+    <h1 onclick="console.log(this)">
+        <span>DOM Events Bubble Event</span>
+    </h1>
+    <!-- Sự kiện nổi bọt ở đây dù cho click vào thẻ con là span nhưng sự kiện ở thẻ cha h1 vẫn hoạt động -->
+    <!-- Sự kiện nổi bọt sẽ diễn ra từ thẻ con đi ra, xét sự kiện ở thẻ con trước rồi đi dần ra thẻ cha -->
+    <!-- Tùy cách sử dụng có muốn nổi bọt hay không thì sẽ có cách ngăn chặn sự kiện nổi bọt -->
+    <h1 onmouseover="console.log(Math.random())">DOM Events 2</h1>
+    <h1 onmouseout="console.log(Math.random())">DOM Events 3</h1>
+
+    <!-- 2. Assign event using the element node  -->
+    <h1 class="assign">
+        <span>Assign event 1</span>
+    </h1>
+
+    <h1 class="assign">
+        <span>Assign event 2</span>
+    </h1>
+
+    <h1 class="assign">
+        <span>Assign event 3</span>
+    </h1>
+
+
+    <!-- Xử lí thẻ input -->
+    <input type="text">
+    <input type="checkbox">
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <!-- Keydown -->
+    <h1>Key down</h1>
+    <input class="keydown" type="text">
+
+    <!-- 1. preventDefault: ngăn chặn hành vi mặc định của trình duyệt -->
+    <h1>Prevent Default</h1>
+    <a href="https://f8.edu.vn">
+        Học lập trình
+    </a>
+    <br>
+    <a href="https://google.com">
+        Tìm kiếm
+    </a>
+
+    <!-- Ví dụ khác về ngăn chặn hành vi mặc định là bấm vào ô input thì hiển thị list 
+        bấm ra ngoài thì vẫn còn list -->
+    <input class="search" placeholder="Tìm kiếm">
+    <ul>
+        <li>Javascript</li>
+        <li>PHP</li>
+        <li>Ruby</li>
+    </ul>
+
+    <!-- Ngăn sự kiện nổi bọt -->
+    <h1>Bubble</h1>
+    <div> 
+        <!-- khi nhấn vào thẻ div thì sẽ in ra DIV -->
+        DIV
+        <!-- Nhưng khi nhấn vào button thì sẽ in ra cả 2 vì ở đây đang có skien nổi bọt -->
+        <button>Click me!</button>
+    </div>
+    <!-- Xu li nhiều Event 1 lúc bằng event DOM -->
+    <button id="buttonevent">Test nhieu event 1 luc bằng event DOM</button>
+    <br>
+    <!-- Xu li nhiều Event 1 lúc bằng event listener -->
+    <button id="btn">Test nhieu event 1 luc bằng event listener</button>
+    <script src="./main.js"></script>
+</body>
+</html>
